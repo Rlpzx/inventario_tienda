@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+    <title>Agregar proveedor</title>
+</head>
+<body>
+      <%- include('encavezado') %>
+      <div style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+">
+
+  <h1 style="color: #1a237e; margin-bottom: 1.5rem;">Agregar Proveedor</h1>
+  <% if (typeof mensaje !== 'undefined') { %>
+  <div style="background-color: #ffebee; color: #c62828; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">
+    <%= mensaje %>
+  </div>
+<% } %>
+
+  <form action="/validar" method="post" style="
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  ">
+
+    <label for="id" style="margin-top: 0.5rem;">Cédula:</label>
+    <input type="number" name="id" id="id" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <label for="nom" style="margin-top: 0.5rem;">Nombre:</label>
+    <input type="text" name="nom" id="nom" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <label for="tel" style="margin-top: 0.5rem;">Teléfono:</label>
+    <input type="number" name="tel" id="tel" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <label for="direccion" style="margin-top: 0.5rem;">Dirección:</label>
+    <input type="text" name="direccion" id="direccion" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <button type="submit" style="
+      margin-top: 1.5rem;
+      padding: 0.8rem;
+      background-color: #1a237e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    ">Guardar</button>
+  </form>
+</div>
+
+</body>
+</html>

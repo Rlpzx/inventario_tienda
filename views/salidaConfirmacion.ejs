@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resumen de Factura</title>
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f8; margin: 0;">
+
+  <%- include('encavezado') %>
+
+  <div style="max-width: 800px; margin: 2rem auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h1 style="text-align: center; color: #1a237e; margin-bottom: 1rem;">Resumen de Factura</h1>
+
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+      <thead>
+        <tr style="background-color: #1a237e; color: white;">
+          <th style="padding: 0.75rem;">Producto</th>
+          <th style="padding: 0.75rem;">Valor</th>
+          <th style="padding: 0.75rem;">Fecha</th>
+          <th style="padding: 0.75rem;">Proveedor</th>
+          <th style="padding: 0.75rem;">Descripción</th>
+          <th style="padding: 0.75rem;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% carrito.forEach((item, index) => { %>
+          <tr style="text-align: center;">
+            
+           <td><%= item.producto || item.nombre %></td>
+            <td style="padding: 0.75rem;"><%= item.cantidad %></td>
+            <td style="padding: 0.75rem;"><%= item.fecha %></td>
+            <td style="padding: 0.75rem;"><%= item.proveedor %></td>
+            <td style="padding: 0.75rem;"><%= item.descripcion %></td>
+              <td>
+              <form action="/eliminar-carrito" method="POST" style="display:inline;">
+                <input type="hidden" name="index" value="<%= index %>">
+                <button type="submit">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <h2 style="text-align: right; color: #2e7d32;">Total a pagar: <%= total %></h2>
+
+
+    <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+      <a href="/salida" style="padding: 0.8rem 1.5rem; background-color: #757575; color: white; text-decoration: none; border-radius: 8px;">Agregar Otra compra</a>
+      <form action="/finalizar_factura" method="POST">
+        <button type="submit" style="padding: 0.8rem 1.5rem; background-color: #1a237e; color: white; border: none; border-radius: 8px; cursor: pointer;">Finalizar Compra</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+

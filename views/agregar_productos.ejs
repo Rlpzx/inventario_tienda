@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Productos</title>
+</head>
+<body>
+    <%- include('encavezado') %>
+      <div style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+">
+
+  <h1 style="color: #1a237e; margin-bottom: 1.5rem;">Agregar Producto</h1>
+
+
+  <form action="/agregar_productos" method="post" style="
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  ">
+    <label for="nom" style="margin-top: 0.5rem;">Nombre:</label>
+    <input type="text" name="nom" id="nom" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <label for="fecha" style="margin-top: 0.5rem;">Fecha de Vencimiento:</label>
+    <input type="date" name="fecha" id="fecha" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <label for="categoria" style="margin-top: 0.5rem;">Categoria:</label>
+    <input type="text" name="categoria" id="categoria" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+     <label for="precioCompra" style="margin-top: 0.5rem;">Precio de compra:</label>
+    <input type="number" name="compra" id="compra" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+     <label for="porcentaje" style="margin-top: 0.5rem;">Porcentaje de venta:</label>
+    <input type="number" name="porcentaje" id="porcentaje" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <label for="cantidad_actual" style="margin-top: 0.5rem;">Cantidad a Ingresar:</label>
+    <input type="number" name="cantidad_actual" id="cantidad_actual" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <label for="cantidad_minima" style="margin-top: 0.5rem;">cantidad minima:</label>
+    <input type="number" name="cantidad_minima" id="cantidad_minima" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <label for="IDproveedor" style="margin-top: 0.5rem;">proveedor:</label>
+    <input type="text" name="proveedor" id="proveedor" style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 8px;">
+
+    <button type="submit" style="
+      margin-top: 1.5rem;
+      padding: 0.8rem;
+      background-color: #1a237e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    ">Guardar</button>
+  </form>
+</div>
+</body>
+</html>

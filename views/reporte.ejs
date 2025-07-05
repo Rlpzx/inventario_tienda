@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte General</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 30px;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    .titulo {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .formulario {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      max-width: 500px;
+       text-align: center;
+    }
+
+    .campo {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    input[type="date"], select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .boton {
+      padding: 10px 20px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton:hover {
+      background-color: #2980b9;
+    }
+
+    .resultados {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      margin-top: 30px;
+      background-color: #ecf0f1;
+      padding: 20px;
+      border-radius: 12px;
+      align-items: center;
+    }
+
+    .resultados p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+  </style>
+  <script>
+    function mostrarFechas(valor) {
+      document.getElementById('fecha_unica').style.display = valor === 'unica' ? 'block' : 'none';
+      document.getElementById('fecha_rango').style.display = valor === 'rango' ? 'block' : 'none';
+    }
+  </script>
+</head>
+<body>
+     <%- include('encavezado') %>
+<div style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+">
+  <h2 class="titulo">Reporte General</h2>
+
+  <form action="/reporte" method="GET" class="formulario">
+    <div class="campo">
+      <label for="modo">Modo:</label>
+      <select name="modo" id="modo" onchange="mostrarFechas(this.value)">
+        <option value="unica">Una sola fecha</option>
+        <option value="rango">Rango de fechas</option>
+      </select>
+    </div>
+
+    <div id="fecha_unica" class="campo">
+      <label>Fecha:</label>
+      <input type="date" name="fecha_unica">
+    </div>
+
+    <div id="fecha_rango" class="campo" style="display:none;">
+      <label>Desde:</label>
+      <input type="date" name="fecha_inicio">
+      <label>Hasta:</label>
+      <input type="date" name="fecha_fin">
+    </div>
+
+    <button type="submit" class="boton">Generar Reporte</button>
+  </form>
+    </div>
+  <% if (datos) { %>
+    <div class="resultados">
+      <h3>Resultados:</h3>
+      <p><strong>Total Compras:</strong> $<%= datos.total_compras %></p>
+      <p><strong>Total Ventas:</strong> $<%= datos.total_ventas %></p>
+      <p><strong>Ganancia:</strong> $<%= datos.ganancia %></p>
+    </div>
+  <% } %>
+
+</body>
+</html>

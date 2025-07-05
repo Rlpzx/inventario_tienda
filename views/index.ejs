@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Inventario - Merkanova</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <%- include('encavezado') %>
+
+  <main>
+    <section class="resumen" >
+      <h2>Resumen del Inventario</h2>
+      <div class="cards">
+        <div class="card">
+          <h3><a href="/productos" style="text-decoration: none;">Total de Productos</a></h3>
+          <p> <strong><%= total %></strong></p>
+        </div>
+        
+        <div class="card">
+          <h3><a href="/stock_bajo" style="text-decoration: none;">Stock Bajo</a></h3>
+         <p><strong><%= resultado %></strong></p>
+        </div>
+        <div class="card alerta">
+          <h3><a href="/productosA" style="text-decoration: none;">Productos agotados</a></h3>
+          <p><strong><%= resultado2 %></strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="alertas">
+      <h2>productos proximos a vencer</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>nombre</th>
+            <th>fecha de vencimiento</th>
+            <th>Categoría</th>
+            <th>proveedor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% producto1.forEach(function(producto) { %>
+        <tr style="border-bottom: 1px solid #eee; transition: background-color 0.3s;">
+          <td style="padding: 0.75rem;"><%= producto.idProducto %></td>
+          <td style="padding: 0.75rem;"><%= producto.nombre %></td>
+          <td style="padding: 0.75rem;"><%= producto.fecha_vencimiento_formateada %></td>
+          <td style="padding: 0.75rem;"><%= producto.nombreCategoria %></td>
+          <td style="padding: 0.75rem;"><%= producto.nombreProveedor%></td>
+
+        </tr>
+      <% }); %>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Merkanova. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

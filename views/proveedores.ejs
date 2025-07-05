@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lista de Proveedores</title>
+</head>
+<body>
+    <%- include('encavezado') %>
+
+   <div style="
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+">
+
+  <h1 style="color: #1a237e; text-align: center; margin-bottom: 1.5rem;">Lista de Proveedores</h1>
+  <form action="/buscar_proveedor" method="GET" style="margin-bottom: 1rem; display: flex; gap: 0.5rem;">
+  <input type="text" name="dato" placeholder="Buscar por cédula, nombre, teléfono o dirección" style="flex: 1; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;">
+  <button type="submit" style="padding: 0.5rem 1rem; background-color: #1a237e; color: white; border: none; border-radius: 6px; cursor: pointer;">Buscar</button>
+</form>
+ <% if (typeof texto !== 'undefined') { %>
+  <div style="background-color: #ffebee; color: #c62828; padding: 1rem; border-radius: 5px; margin-bottom: 1rem;">
+    <%= texto %>
+  </div>
+<% } %>
+
+
+  <table style="
+    width: 100%;
+    border-collapse: collapse;
+  ">
+    <thead>
+      <tr style="background-color: #1a237e; color: white;">
+        <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #ccc;">Cédula</th>
+        <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #ccc;">Nombre</th>
+        <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #ccc;">Teléfono</th>
+        <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #ccc;">Dirección</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% proveedores.forEach(function(proveedor) { %>
+        <tr style="border-bottom: 1px solid #eee; transition: background-color 0.3s;">
+          <td style="padding: 0.75rem;"><%= proveedor.idProveedor %></td>
+          <td style="padding: 0.75rem;"><%= proveedor.nombre %></td>
+          <td style="padding: 0.75rem;"><%= proveedor.contacto %></td>
+          <td style="padding: 0.75rem;"><%= proveedor.direccion %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+   <button onclick="window.location.href='/agregar_proveedor'" style="
+  margin-top: 1.5rem;
+  padding: 0.8rem;
+  background-color: #1a237e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+">
+  Agregar Proveedores
+</button>
+
+</div>
+</body>
+</html>
